@@ -75,7 +75,6 @@ public class Altlore implements ClientModInitializer {
                                 .collect(Collectors.joining("="))
                                 .replaceAll("\n", "")
                                 .replaceAll("\r", "");
-                            System.out.println(Arrays.toString(loreTextRaw.split("\\\\n")));
                             lore.put(item, loreTextRaw.split("\\\\n"));
                         }
                     });
