@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "altlore",
+  "version": "${version}",
+  "name": "Altlore",
+  "description": "Adds alt text for certain items",
+  "authors": [
+    "P03W / TheoreticallyUseful"
+  ],
+  "contact": {},
+  "license": "MPL-2.0",
+  "icon": "assets/altlore/icon_small.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "mc.altlore.client.Altlore"
+    ]
+  },
+  "mixins": [
+    "altlore.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": "*",
+    "fabric": "*",
+    "minecraft": "*"
+  }
+}
