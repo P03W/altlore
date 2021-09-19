@@ -29,7 +29,7 @@ public class OverrideTooltipTextMixin {
         if (!isPressed() && hasLore()) {
             list.add(
                 new TranslatableText("message.altlore.holdKey_1")
-                    .formatted(Formatting.DARK_GRAY)
+                    .formatted(Formatting.byName(Altlore.config.promptFormatting))
                     .append(Altlore.keyBinding.getBoundKeyLocalizedText())
                     .append(new TranslatableText("message.altlore.holdKey_2"))
             );

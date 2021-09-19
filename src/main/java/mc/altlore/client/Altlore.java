@@ -1,5 +1,7 @@
 package mc.altlore.client;
 
+import mc.altlore.AltLoreConfig;
+import mc.microconfig.MicroConfig;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -12,6 +14,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.resource.ResourceManager;
 import net.minecraft.resource.ResourceType;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import org.lwjgl.glfw.GLFW;
@@ -27,10 +30,18 @@ import java.util.stream.Collectors;
 @Environment(EnvType.CLIENT)
 public class Altlore implements ClientModInitializer {
     public static KeyBinding keyBinding;
-    public static HashMap<Item, String[]> lore = new HashMap<Item, String[]>();
+    public static HashMap<Item, String[]> lore = new HashMap<>();
+    
+    public static AltLoreConfig config = MicroConfig.getOrCreate("altlore", new AltLoreConfig());
     
     @Override
     public void onInitializeClient() {
+        Formatting format = Formatting.byName(config.promptFormatting);
+        if (format == null) {
+            System.err.println("Unknown formatting " + config.promptFormatting + ", defaulting to dark_gray");
+            config.promptFormatting = "dark_gray";
+        }
+        
         keyBinding = KeyBindingHelper.registerKeyBinding(new KeyBinding(
             "key.altlore.show",
             InputUtil.Type.KEYSYM,
