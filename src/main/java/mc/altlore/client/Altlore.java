@@ -49,7 +49,7 @@ public class Altlore implements ClientModInitializer {
             "category.altlore.keybinds"
         ));
         
-        ResourceManagerHelper.get(ResourceType.CLIENT_RESOURCES).registerReloadListener(
+        ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(
             new SimpleSynchronousResourceReloadListener() {
                 @Override
                 public void reload(ResourceManager manager) {
